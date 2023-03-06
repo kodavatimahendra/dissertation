@@ -1,0 +1,49 @@
+<!-- disclaimer.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Medical Information Disclaimer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+      .shadow-regular {
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+      }
+      .center-screen {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .addSpace {
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container center-screen shadow-regular">
+      <div class="addSpace">
+      <h1>Medical Information Disclaimer</h1>
+      <p>The information provided on this website is for general informational purposes only and is not intended to be a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified healthcare provider with any questions you may have regarding a medical condition.</p>
+      <p>Never disregard professional medical advice or delay in seeking it because of something you have read on this website.</p>
+      <p>If you think you may have a medical emergency, call your doctor or 911 immediately.</p>
+      <p>Accept these terms?</p>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="accept-terms" id="accept-yes" value="yes">
+        <label class="form-check-label" for="accept-yes">
+          Yes
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="accept-terms" id="accept-no" value="no">
+        <label class="form-check-label" for="accept-no">
+          No
+        </label>
+      </div>
+      
+      <p></p><button type="button" class="btn btn-primary" onclick="location.href='works.html'">Next</button>
+      </div>
+    </div>
+  </body>
+</html>

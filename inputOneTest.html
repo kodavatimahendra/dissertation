@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Timer</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<style>
+		.container {
+			margin-top: 20%;
+			box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+			padding: 20px;
+			text-align: center;
+		}
+		.timer {
+			font-size: 30px;
+		}
+        .form-control {
+			font-size: 30px;
+			padding: 20px;
+			height: 300px;
+			resize: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="timer">30:00</div>
+        <p>You can start typing how you feel. You have 30 mins to complete this section.</p>
+		<textarea class="form-control" placeholder="Enter your text..."></textarea>
+	</div>
+	<script>
+		var timer = document.querySelector('.timer');
+		var minutes = 1;
+		var seconds = 0;
+
+		var interval = setInterval(function() {
+			if (minutes == 0 && seconds == 0) {
+				timer.innerHTML = "Time's up!";
+				clearInterval(interval);
+                window.location.href = "modules.html";
+			} else {
+				if (seconds == 0) {
+					minutes--;
+					seconds = 59;
+				} else {
+					seconds--;
+				}
+
+				timer.innerHTML = ("0" + minutes).slice(-2) + ":" + ("0" + seconds).slice(-2);
+			}
+		}, 1000);
+	</script>
+</body>
+</html>
+
+
+
+
+
+
