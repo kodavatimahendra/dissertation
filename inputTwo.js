@@ -3,18 +3,18 @@ const textArea = document.getElementById('text-area');
 const submitBtn = document.getElementById('submit-btn');
 var timer = document.querySelector('.timer');
 var typedText = document.querySelector('.typedText');
-var isSubmitted = true;
+// var isSubmitted = true;
 
 // Retrieve the text from Local Storage and display it if it exists
-const savedText = localStorage.getItem('textTwo');
-if (savedText) {
+const savedText2 = localStorage.getItem('module2_ans');
+if (savedText2) {
   isSubmitted=false;
   textArea.style.display = 'none';
-  typedText.innerHTML = savedText;
+  typedText.innerHTML = savedText2;
   submitBtn.disabled = false;
 }
-
-if(isSubmitted){
+else {
+// if(isSubmitted){
 		var minutes = 0;
 		var seconds = 5;
 
@@ -44,11 +44,11 @@ const intervalId = setInterval(updateTimer(), 1000);
 
 function clickedSubmit(){
     const textTwo = textArea.value;
-  localStorage.setItem('textTwo', textTwo);
+  localStorage.setItem('module2_ans', textTwo);
     textArea.style.display = 'none';
-    const savedText = localStorage.getItem('textTwo');
-    if (savedText) {
-        typedText.innerHTML = savedText;
+    const savedText2 = localStorage.getItem('module2_ans');
+    if (savedText2) {
+        typedText.innerHTML = savedText2;
         isSubmitted = true;
     }
     window.location.href = "modules.html";

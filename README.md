@@ -1,4 +1,4 @@
-# dissertation webpage for a friend
+# A very basic dissertation webpage for a friend
 
 ## Todo
 Components inside the digital format: \
