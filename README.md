@@ -1,5 +1,8 @@
 # dissertation webpage for a friend
 
+## Assumptions
+- The client will be answering questions one after another. They will have to answer the questions in order. They cannot go back. They cannot skip questions. They have to spend the full 30 mins on each question.
+
 ## Todo
 Components inside the digital format: \
 Screen 1 - Log in screen clinician  
