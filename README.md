@@ -13,7 +13,6 @@
 | 5 | education.html | pyscho education introduction |
 | 6 | modules{.html/.js} | list of all modules |
 | 7 | module_{1/2/3/4/5}.html | individual modules |
-| 8 | help.html | help page |
 
 ## Features to add in the future
 Screen 5 
