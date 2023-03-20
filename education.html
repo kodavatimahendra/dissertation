@@ -3,7 +3,7 @@
   <head>
     <title>Physco Education</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <style>
       .shadow-regular {
         box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
@@ -18,14 +18,91 @@
         margin-top: 3rem;
         margin-bottom: 3rem;
       }
+      .hidden {
+        display: none;
+      }
+      .button-container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 3rem;
+      }
+      .button-container button {
+        margin-right: 1rem;
+      }
+      .contact-list {
+        margin-bottom: 1rem;
+      }
     </style>
+    <script>
+        window.onload = function() {
+          initContacts();
+          showContacts();
+        };
+      function initContacts() {
+        const defaultContacts = [
+          { name: "Emergency Services", phoneNumber: "911" },
+          { name: "National Suicide Prevention Lifeline", phoneNumber: "1-800-273-TALK (8255)" },
+          { name: "Crisis Text Line", phoneNumber: "Text HOME to 741741" },
+          { name: "National Domestic Violence Hotline", phoneNumber: "1-800-799-SAFE (7233)" }
+        ];
+        if (!localStorage.getItem("contacts")) {
+          localStorage.setItem("contacts", JSON.stringify(defaultContacts));
+        }
+      }
+      function addPhoneNumber() {
+        const name = document.getElementById("name").value;
+        const phoneNumber = document.getElementById("phone-number").value;
+        if (name && phoneNumber) {
+          let contacts = JSON.parse(localStorage.getItem("contacts")) || [];
+          contacts.push({ name, phoneNumber });
+          localStorage.setItem("contacts", JSON.stringify(contacts));
+          document.getElementById("name").value = "";
+          document.getElementById("phone-number").value = "";
+          alert("Contact saved.");
+        } else {
+          alert("Please enter a name and phone number.");
+        }
+        showContacts();
+      }
+      function showContacts() {
+        let contacts = JSON.parse(localStorage.getItem("contacts")) || [];
+        let contactsHtml = "<p><strong>List of current crisis/help phone numbers:</strong><br>";
+        contacts.forEach((contact) => {
+          contactsHtml += `<span style="display:inline-block;width:300px">${contact.name}:</span> ${contact.phoneNumber}<br>`;
+        });
+        contactsHtml += "</p>";
+        document.getElementById("contact-list").innerHTML = contactsHtml;
+      }
+
+      function showPhoneNumberForm() {
+        showContacts();
+        document.getElementById("phone-number-form").classList.remove("hidden");
+      }
+    </script>
   </head>
+  <!-- <body onload="showContacts()"> -->
   <body>
     <div class="container center-screen shadow-regular">
       <div class="addSpace">
-      <h1>Physco Education portion for Chronic pain and Trauma</h1>
-      <p>We can put some content Education here.</p>
-      <button type="button" class="btn btn-primary" onclick="location.href='modules.html'">Next</button>
+        <h1>Physco Education portion for Chronic pain and Trauma</h1>
+        <p>We can put some content Education here.</p>
+
+        <div class="contact-list" id="contact-list"></div>
+        
+        <button type="button" class="btn btn-secondary" onclick="showPhoneNumberForm()">Add more crisis/help phone number?</button>
+
+        <div class="form-group hidden" id="phone-number-form">
+          <label for="name">Name:</label>
+          <input type="text" class="form-control" id="name" placeholder="Enter name">
+          <label for="phone-number">Phone Number:</label>
+          <input type="text" class="form-control" id="phone-number" placeholder="Enter phone number">
+          <button type="button" class="btn btn-secondary mt-2" onclick="addPhoneNumber()">Save Name and Phone Number</button>
+        </div>
+
+        <div class="button-container">
+          <button type="button" class="btn btn-primary" id="prev-button" onclick="location.href='works.html'">Previous</button>
+          <button type="button" class="btn btn-primary" id="next-button" onclick="location.href='modules.html'">Next</button>
+        </div>
       </div>
     </div>
   </body>

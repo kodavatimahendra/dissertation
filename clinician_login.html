@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CronP - Clinician Portal</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script>
+        function redirectToDisclaimer() {
+            window.location.href = 'disclaimer.html';
+        }
+    </script>
+</head>
+<body>
+    <!-- <div class="container center-screen shadow-regular"> -->
+    <div class="container">
+        <h1 class="text-center mt-5">CronP - Clinician Portal</h1>
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-4">
+                <form>
+                    <div class="form-group">
+                        <label for="clinician-username">Username</label>
+                        <input type="text" class="form-control" id="clinician-username" placeholder="Enter username">
+                    </div>
+                    <div class="form-group">
+                        <label for="clinician-password">Password</label>
+                        <input type="password" class="form-control" id="clinician-password" placeholder="Password">
+                    </div>
+                    <!-- <button type="submit" class="btn btn-primary" onclick="login()">Login</button> -->
+                    <button type="button" class="btn btn-primary" onclick="redirectToDisclaimer()">Login</button>
+                </form>
+                <div class="text-center mt-3">
+                    <p><a href="#">Forgot your password? Click Here</a></p>
+                    <p><a href="#">Need to create an account? Click Here</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <script src="login.js"></script> -->
+</body>
+</html>

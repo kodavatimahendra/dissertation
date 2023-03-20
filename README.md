@@ -3,8 +3,36 @@
 ## Assumptions
 - The client will be answering questions one after another. They will have to answer the questions in order. They cannot go back. They cannot skip questions. They have to spend the full 30 mins on each question.
 
-## Todo
-Components inside the digital format: \
+## Order of pages
+| Screen# |Page | Description |
+| --- | --- | ---- |
+| 1 | index.html | Select between client and clinician logins |
+| 2 | {client/clinician}_login.html | Login screens client/clinician |
+| 3 | disclaimer.html | medical disclaimer |
+| 4 | works.html | how it works |
+| 5 | education.html | pyscho education introduction |
+| 6 | modules{.html/.js} | list of all modules |
+| 7 | module_{1/2/3/4/5}.html | individual modules |
+| 8 | help.html | help page |
+
+## Features to add in the future
+Screen 5 
+- Psychoeducation tab? 
+- >Do not understand this requirement.
+
+Screen 4 
+- ability to pass this screen after first time log in (click button in box) 
+- >No server is connected. So might not be able to do this.
+
+Reminders tab 
+- Reminders for the client to do the modules. 
+- >No server is connected. So might not be able to do this.
+
+Others
+- Accessibility features? (Voice activation, font size changes, etc.)
+- >Depending on the smartphone accessibility features, not implementing anything on the website side.
+
+## Done
 Screen 1 - Log in screen clinician  
 - Title of app “CronP - Clinician Portal” 
 - Username box 
@@ -12,6 +40,7 @@ Screen 1 - Log in screen clinician
 - “Login” button to press 
   -  Under put “Forgot your password? Click Here 
 - Need to create an account? Click Here 
+
 Screen 2 -Log in screen for client 
 - Title of app “CronP - Client Portal” 
 - Username box 
@@ -26,12 +55,11 @@ Screen 3 -Disclaimer
   - Yes or No buttons 
 
 Screen 4 
-- Education portion that shows/explains how to work the app and how to access the help/crisis button. Ideally this would be a good spot to direct the client to input extra phone numbers into the help/crisis button page 
-- ability to pass this screen after first time log in (click button in box) 
+- Education portion that shows/explains how to work the app and how to access the help/crisis button. 
+- Ideally this would be a good spot to direct the client to input extra phone numbers into the help/crisis button page 
 
 Screen 5 
 - list of tabs/modules they can click on 
-- Psychoeducation tab 
 
 Module 1 tab 
 - Once opened, will administer the PCL-5 questionnaire and then the pain questions 
@@ -57,10 +85,6 @@ Module 5 tab
 - Once opened, will administer the PCL-5 questionnaire and then the pain questions 
 - Prompt will appear next  
 - Open space to write/type (this part needs to be timed for 30 min if possible) 
-zx
-Reminders tab 
-
 
 Others
 - Help/Crisis button that shows up throughout like up in a corner that would link to a help/crisis resource page 
-- Accessibility features? (Voice activation, font size changes, etc.)
