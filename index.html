@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <style>
+      .user-selection {
+          cursor: pointer;
+      }
       .shadow-regular {
         box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
       }
@@ -18,16 +21,55 @@
         margin-top: 3rem;
         margin-bottom: 3rem;
       }
+      .button-container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 3rem;
+      }
+      .button-container button {
+        margin-right: 1rem;
+      }
     </style>
+    <script>
+      function clearLocalStorage() {
+        localStorage.clear();
+        location.reload(); // reloads the page to reflect the cleared storage
+      }
+      function redirectToPortal(userType) {
+        clearLocalStorage();
+          if (userType === 'clinician') {
+              window.location.href = 'clinician_login.html';
+          } else if (userType === 'client') {
+              window.location.href = 'client_login.html';
+          }
+      }
+  </script>
   </head>
   <body>
-    <div class="container center-screen shadow-regular">
+    <!-- <div class="container center-screen shadow-regular">
       <div class="addSpace">
       <h1>Written Exposure Therapy</h1>
       <button type="button" class="btn btn-primary btn-block btn-sm my-3">Sign up with Facebook</button>
       <button type="button" class="btn btn-primary btn-block btn-sm my-3">Sign up with Email</button>
       <a href="login.html" class="text-center d-block mb-3">Already have an account? Login In</a>
       </div>
-    </div>
+    </div> -->
+    <div class="container">
+      <h1 class="text-center mt-5">CronP - Written Exposure Therapy</h1>
+      <div class="row justify-content-center mt-5">
+          <div class="col-md-4">
+              <div class="card user-selection mb-4" onclick="redirectToPortal('clinician')">
+                  <div class="card-body">
+                      <h5 class="card-title text-center">Clinician</h5>
+                  </div>
+              </div>
+              <div class="card user-selection" onclick="redirectToPortal('client')">
+                  <div class="card-body">
+                      <h5 class="card-title text-center">Client</h5>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
   </body>
 </html>

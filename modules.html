@@ -14,6 +14,38 @@
         left: 50%;
         transform: translate(-50%, -50%);
       }
+      .button-container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 3rem;
+      }
+      .button-container button {
+        margin-right: 1rem;
+      }
+      #help-overlay {
+            display: none;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+            text-align: center;
+            padding-top: 100px;
+      }
+      #help-overlay p {
+          color: white;
+          font-size: 20px;
+      }
+      #help-overlay button {
+          margin-top: 20px;
+      } 
+      #help-btn {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+      }
     </style>
   </head>
   <body>
@@ -21,26 +53,39 @@
       <h1>Modules</h1>
       <div class="row">
         <div class="col-md-12 text-center mb-4">
+          <p>PCL-5 test administration</p>
+          <a href="#" class="btn btn-primary" onclick="location.href='pcl5.html'">Start Test</a>
+        </div>
+        <div class="col-md-12 text-center mb-4">
           <p>Module 1 description goes here</p>
-          <a href="#" class="btn btn-primary" onclick="location.href='inputOne.html'">Start Module 1</a>
+          <a href="#" class="btn btn-primary" onclick="location.href='module_1.html'">Start Module 1</a>
         </div>
         <div class="col-md-12 text-center mb-4">
           <p>Module 2 description goes here</p>
-          <a href="#" class="btn btn-primary" onclick="location.href='inputTwo.html'">Start Module 2</a>
+          <a href="#" class="btn btn-primary" onclick="location.href='module_2.html'">Start Module 2</a>
         </div>
         <div class="col-md-12 text-center mb-4">
           <p>Module 3 description goes here</p>
-          <a href="#" class="btn btn-primary">Start Module 3</a>
+          <a href="#" class="btn btn-primary" onclick="location.href='module_3.html'">Start Module 3</a>
         </div>
         <div class="col-md-12 text-center mb-4">
           <p>Module 4 description goes here</p>
-          <a href="#" class="btn btn-primary">Start Module 4</a>
+          <a href="#" class="btn btn-primary" onclick="location.href='module_4.html'">Start Module 4</a>
         </div>
         <div class="col-md-12 text-center mb-4">
           <p>Module 5 description goes here</p>
-          <a href="#" class="btn btn-primary">Start Module 5</a>
+          <a href="#" class="btn btn-primary" onclick="location.href='module_5.html'">Start Module 5</a>
         </div>
       </div>
+
+  
     </div>
+    <button id="help-btn" class="btn btn-info" onclick="showHelp()">Help</button>
+    <div id="help-overlay">
+        <p>Here's some help text...</p>
+        <button id="close-btn" class="btn btn-primary" onclick="hideHelp()">Close</button>
+    </div>
+
+    <script src="module.js"></script>
   </body>
 </html>

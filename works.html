@@ -18,6 +18,14 @@
         margin-top: 3rem;
         margin-bottom: 3rem;
       }
+      .button-container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 3rem;
+      }
+      .button-container button {
+        margin-right: 1rem;
+      }
     </style>
   </head>
   <body>
@@ -25,7 +33,12 @@
       <div class="addSpace">
       <h1>How It Works</h1>
       <p>We can put some content on how it works here.</p>
-      <button type="button" class="btn btn-primary" onclick="location.href='education.html'">Next</button>
+
+      <div class="button-container">
+        <button type="button" class="btn btn-primary" id="prev-button" onclick="location.href='disclaimer.html'">Previous</button>
+        <button type="button" class="btn btn-primary" id="next-button" onclick="location.href='education.html'">Next</button>
+      </div>
+
       </div>
     </div>
   </body>
