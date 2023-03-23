@@ -19,25 +19,6 @@
 			height: 300px;
 			resize: none;
 		}
-        #help-overlay {
-            display: none;
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1;
-            text-align: center;
-            padding-top: 100px;
-        }
-        #help-overlay p {
-            color: white;
-            font-size: 20px;
-        }
-        #help-overlay button {
-            margin-top: 20px;
-        }
         #help-btn {
             position: absolute;
             top: 10px;
@@ -54,13 +35,10 @@
     <!-- <button id="back-btn" class="btn btn-primary mb-3" onclick="clickedSubmit()">Back</button> -->
     <button id="submit-btn" class="btn btn-primary mb-3" disabled onclick="clickedSubmit()">Submit</button>
     <button id="help-btn" class="btn btn-info" onclick="showHelp()">Help</button>
-    <div id="help-overlay">
-        <p>Here's some help text...</p>
-        <button id="close-btn" class="btn btn-primary" onclick="hideHelp()">Close</button>
-    </div>
+    <div id="help-overlay"></div>
 </div>
-<!-- <script src="inputTwo.js"></script> -->
 <script src="module.js"></script>
+<script src="help.js"></script>
 <script>
 	init('module2'); // Pass a unique identifier for each module
 </script>
