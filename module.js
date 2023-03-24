@@ -1,44 +1,6 @@
 // Add this function at the beginning of your JavaScript code
 function init(moduleId) {
-    const textArea = document.getElementById('text-area');
-    const submitBtn = document.getElementById('submit-btn');
-    var timer = document.querySelector('.timer');
-    var typedText = document.querySelector('.typedText');
-    var isSubmitted = true;
-  
     const storageKey = moduleId + '_text';
-  
-    // Retrieve the text from Local Storage and display it if it exists
-    const savedText = localStorage.getItem(storageKey);
-    if (savedText) {
-      isSubmitted = false;
-      textArea.style.display = 'none';
-      typedText.innerHTML = savedText;
-      submitBtn.disabled = false;
-    }
-    else{
-      // run timer
-      // if (isSubmitted) {
-      var minutes = 0;
-      var seconds = 2;
-  
-      var interval = setInterval(function () {
-        if (minutes == 0 && seconds == 0) {
-          timer.innerHTML = "Time's up!";
-          clearInterval(interval);
-          submitBtn.disabled = false;
-        } else {
-          if (seconds == 0) {
-            minutes--;
-            seconds = 59;
-          } else {
-            seconds--;
-          }
-  
-          timer.innerHTML = ("0" + minutes).slice(-2) + ":" + ("0" + seconds).slice(-2);
-        }
-      }, 1000);
-    }
   
     // submit buttons listeners
     submitBtn.addEventListener('click', function () {
@@ -80,6 +42,11 @@ function finish() {
 // global variables to keep track of the current step
 let currentStep = 0;
 const steps = document.getElementsByClassName("step");
+var timer = document.querySelector('.timer');
+const textArea = document.getElementById('text-area');
+const submitBtn = document.getElementById('submit-btn');
+var typedText = document.querySelector('.typedText');
+var isSubmitted = true;
 
 // Initialize the first step
 steps[currentStep].style.display = "block";
@@ -126,6 +93,38 @@ function changeStep(moduleId, direction) {
 
   steps[currentStep].style.display = "none";
   currentStep += direction;
+
+  if (currentStep === steps.length - 1) { // last step, form submission
+      const savedText = localStorage.getItem(moduleId + '_text');
+      if (savedText) {  // load the saved text and be done with it.
+          isSubmitted = false;
+          textArea.style.display = 'none';
+          typedText.innerHTML = savedText;
+          submitBtn.disabled = false;
+      }
+      else{ // run timer
+          var minutes = 0;
+          var seconds = 2;
+
+          var interval = setInterval(function () {
+              if (minutes == 0 && seconds == 0) {
+                  timer.innerHTML = "Time's up!";
+                  clearInterval(interval);
+                  submitBtn.disabled = false;
+              } else {
+                  if (seconds == 0) {
+                      minutes--;
+                      seconds = 59;
+                  } else {
+                      seconds--;
+                  }
+
+                  timer.innerHTML = ("0" + minutes).slice(-2) + ":" + ("0" + seconds).slice(-2);
+              }
+          }, 1000);
+      }
+  }
+
   steps[currentStep].style.display = "block";
 
   document.getElementById("prevBtn").disabled = currentStep === 0;
