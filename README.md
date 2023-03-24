@@ -11,8 +11,9 @@
 | 3 | disclaimer.html | medical disclaimer |
 | 4 | works.html | how it works |
 | 5 | education.html | pyscho education introduction |
-| 6 | modules{.html/.js} | list of all modules |
-| 7 | module_{1/2/3/4/5}.html | individual modules |
+| 6 | help.js | functions surrounding help/crisis button |
+| 7 | modules{.html/.js} | list of all modules |
+| 8 | module_{1/2/3/4/5}.html | individual modules |
 
 ## Features to add in the future
 Screen 5 

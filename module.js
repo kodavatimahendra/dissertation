@@ -17,7 +17,8 @@ function init(moduleId) {
       submitBtn.disabled = false;
     }
     else{
-    // if (isSubmitted) {
+      // run timer
+      // if (isSubmitted) {
       var minutes = 0;
       var seconds = 2;
   
@@ -39,6 +40,7 @@ function init(moduleId) {
       }, 1000);
     }
   
+    // submit buttons listeners
     submitBtn.addEventListener('click', function () {
       const savedText = localStorage.getItem(storageKey);
       if (savedText) {
@@ -52,8 +54,80 @@ function init(moduleId) {
       }
       window.location.href = "modules.html";
     });
+
+    // prev/next buttons listeners
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    prevBtn.addEventListener('click', function () {
+        changeStep(moduleId, -1);
+    });
+
+    nextBtn.addEventListener('click', function () {
+        changeStep(moduleId, 1);
+    });
+
+    // Load form data for each step
+    for (let i = 0; i < steps.length; i++) {
+      loadFormData(moduleId, i);
+    }
 }
 
 function finish() {
   window.close();
+}
+
+// global variables to keep track of the current step
+let currentStep = 0;
+const steps = document.getElementsByClassName("step");
+
+// Initialize the first step
+steps[currentStep].style.display = "block";
+
+// function to save the q1/q2 answers
+function saveFormData(moduleId, stepIndex) {
+  const step = steps[stepIndex];
+  const inputs = step.querySelectorAll("input, textarea, select");
+  const formData = {};
+
+  for (const input of inputs) {
+      if (input.type === "radio" && !input.checked) continue;
+      formData[input.name] = input.value;
+  }
+
+  const storageKey = moduleId + "_step" + stepIndex;
+  localStorage.setItem(storageKey, JSON.stringify(formData));
+}
+
+// function to load the q1/q2 answers if they were already saved
+function loadFormData(moduleId, stepIndex) {
+  const step = steps[stepIndex];
+  const inputs = step.querySelectorAll("input, textarea, select");
+  const storageKey = moduleId + "_step" + stepIndex;
+  const savedData = localStorage.getItem(storageKey);
+
+  if (savedData) {
+      const formData = JSON.parse(savedData);
+
+      for (const input of inputs) {
+          if (input.type === "radio") {
+              input.checked = formData[input.name] === input.value;
+          } else {
+              input.value = formData[input.name];
+          }
+      }
+  }
+}
+
+// prev/next functionality
+function changeStep(moduleId, direction) {
+  // Save the current step's data before changing the step
+  saveFormData(moduleId, currentStep);
+
+  steps[currentStep].style.display = "none";
+  currentStep += direction;
+  steps[currentStep].style.display = "block";
+
+  document.getElementById("prevBtn").disabled = currentStep === 0;
+  document.getElementById("nextBtn").disabled = currentStep === steps.length - 1;
 }
