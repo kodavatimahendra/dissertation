@@ -12,7 +12,7 @@ body {
     width: 100%;
     font-size: 18px;
     padding: 20px;
-    height: 300px;
+    height: 60vh; /* Change this value */
     resize: both;
     overflow: auto;
 }
@@ -35,7 +35,7 @@ body {
 @media (max-width: 576px) {
     .form-control {
         font-size: 14px;
-        height: 200px;
+        height: 50vh; /* Change this value */
     }
     .timer {
         font-size: 20px;
