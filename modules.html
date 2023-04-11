@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <style>
+      body {
+        background-image: url('background_images/sunset.jpg');
+        background-size: auto;
+      }
       .shadow-regular {
         box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
       }
@@ -13,6 +17,9 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        background-color: white;
+        padding: 2rem;
+        opacity: 0.7;
       }
       .button-container {
         display: flex;
@@ -22,25 +29,6 @@
       .button-container button {
         margin-right: 1rem;
       }
-      #help-overlay {
-            display: none;
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1;
-            text-align: center;
-            padding-top: 100px;
-      }
-      #help-overlay p {
-          color: white;
-          font-size: 20px;
-      }
-      #help-overlay button {
-          margin-top: 20px;
-      } 
       #help-btn {
           position: absolute;
           top: 10px;
@@ -52,10 +40,10 @@
     <div class="container center-screen shadow-regular">
       <h1>Modules</h1>
       <div class="row">
-        <div class="col-md-12 text-center mb-4">
+        <!-- <div class="col-md-12 text-center mb-4">
           <p>PCL-5 test administration</p>
           <a href="#" class="btn btn-primary" onclick="location.href='pcl5.html'">Start Test</a>
-        </div>
+        </div> -->
         <div class="col-md-12 text-center mb-4">
           <p>Module 1 description goes here</p>
           <a href="#" class="btn btn-primary" onclick="location.href='module_1.html'">Start Module 1</a>
@@ -77,15 +65,10 @@
           <a href="#" class="btn btn-primary" onclick="location.href='module_5.html'">Start Module 5</a>
         </div>
       </div>
-
-  
     </div>
     <button id="help-btn" class="btn btn-info" onclick="showHelp()">Help</button>
-    <div id="help-overlay">
-        <p>Here's some help text...</p>
-        <button id="close-btn" class="btn btn-primary" onclick="hideHelp()">Close</button>
-    </div>
-
-    <script src="module.js"></script>
+    <div id="help-overlay"> </div>
+    <!-- <script src="module.js"></script> -->
+    <script src="help.js"></script>
   </body>
 </html>

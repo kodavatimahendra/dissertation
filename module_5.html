@@ -3,63 +3,85 @@
 <head>
     <title>Timer</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <style>
-		.container {
-			margin-top: 20%;
-			box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
-			padding: 20px;
-			text-align: center;
-		}
-		.timer {
-			font-size: 30px;
-		}
-        .form-control {
-			font-size: 30px;
-			padding: 20px;
-			height: 300px;
-			resize: none;
-		}
-        #help-overlay {
-            display: none;
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1;
-            text-align: center;
-            padding-top: 100px;
-        }
-        #help-overlay p {
-            color: white;
-            font-size: 20px;
-        }
-        #help-overlay button {
-            margin-top: 20px;
-        }
-        #help-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-        }
-	</style>
+    <link rel="stylesheet" href="modules.css">
 </head>
 <body>
 <div class="container">
-    <div class="timer">30:00</div>
-    <p>You can start typing how you feel. You have 30 mins to complete this section.</p>
-    <textarea id="text-area" class="form-control" placeholder="Enter your text..."></textarea>
-    <p class="typedText"></p>
-    <!-- <button id="back-btn" class="btn btn-primary mb-3" onclick="clickedSubmit()">Back</button> -->
-    <button id="submit-btn" class="btn btn-primary mb-3" disabled onclick="clickedSubmit()">Submit</button>
-    <button id="help-btn" class="btn btn-info" onclick="showHelp()">Help</button>
-    <div id="help-overlay">
-        <p>Here's some help text...</p>
-        <button id="close-btn" class="btn btn-primary" onclick="hideHelp()">Close</button>
+
+
+    <div class="step" id="questionnaire1">
+        <h2>Questionnaire 1</h2>
+        <form>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Question</th>
+                        <th>Option A</th>
+                        <th>Option B</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Question 1.1</td>
+                        <td><input type="radio" name="q1_1" value="A"></td>
+                        <td><input type="radio" name="q1_1" value="B"></td>
+                    </tr>
+                    <tr>
+                        <td>Question 1.2</td>
+                        <td><input type="radio" name="q1_2" value="A"></td>
+                        <td><input type="radio" name="q1_2" value="B"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
     </div>
+    
+    <div class="step" id="questionnaire2">
+        <h2>Questionnaire 2</h2>
+        <form>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Question</th>
+                        <th>Option A</th>
+                        <th>Option B</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Question 2.1</td>
+                        <td><input type="radio" name="q2_1" value="A"></td>
+                        <td><input type="radio" name="q2_1" value="B"></td>
+                    </tr>
+                    <tr>
+                        <td>Question 2.2</td>
+                        <td><input type="radio" name="q2_2" value="A"></td>
+                        <td><input type="radio" name="q2_2" value="B"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+    
+
+    <div class="step" id="textbox">
+        <h2>Text Box</h2>
+        <div class="timer">30:00</div>
+        <p>You can start typing how you feel. You have 30 mins to complete this section.</p>
+        <textarea id="text-area" class="form-control" placeholder="Enter your text..."></textarea>
+        <p class="typedText"></p>
+    </div>
+
+    <div class="buttons">
+        <button id="prevBtn" class="btn btn-primary mb-3" disabled>Previous</button>
+        <button id="nextBtn" class="btn btn-primary mb-3">Next</button>
+    </div>
+    <button id="submit-btn" class="btn btn-primary mb-3" disabled>Submit</button>
+    <button id="help-btn" class="btn btn-info" onclick="showHelp()">Help</button>
+    <div id="help-overlay"></div>
 </div>
 <script src="module.js"></script>
+<script src="help.js"></script>
 <script>
 	init('module5'); // Pass a unique identifier for each module
 </script>

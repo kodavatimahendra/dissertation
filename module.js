@@ -1,44 +1,8 @@
 // Add this function at the beginning of your JavaScript code
 function init(moduleId) {
-    const textArea = document.getElementById('text-area');
-    const submitBtn = document.getElementById('submit-btn');
-    var timer = document.querySelector('.timer');
-    var typedText = document.querySelector('.typedText');
-    var isSubmitted = true;
-  
     const storageKey = moduleId + '_text';
   
-    // Retrieve the text from Local Storage and display it if it exists
-    const savedText = localStorage.getItem(storageKey);
-    if (savedText) {
-      isSubmitted = false;
-      textArea.style.display = 'none';
-      typedText.innerHTML = savedText;
-      submitBtn.disabled = false;
-    }
-    else{
-    // if (isSubmitted) {
-      var minutes = 0;
-      var seconds = 2;
-  
-      var interval = setInterval(function () {
-        if (minutes == 0 && seconds == 0) {
-          timer.innerHTML = "Time's up!";
-          clearInterval(interval);
-          submitBtn.disabled = false;
-        } else {
-          if (seconds == 0) {
-            minutes--;
-            seconds = 59;
-          } else {
-            seconds--;
-          }
-  
-          timer.innerHTML = ("0" + minutes).slice(-2) + ":" + ("0" + seconds).slice(-2);
-        }
-      }, 1000);
-    }
-  
+    // submit buttons listeners
     submitBtn.addEventListener('click', function () {
       const savedText = localStorage.getItem(storageKey);
       if (savedText) {
@@ -52,165 +16,117 @@ function init(moduleId) {
       }
       window.location.href = "modules.html";
     });
-}
 
-function showHelpOld() {
-  let contacts = JSON.parse(localStorage.getItem("contacts")) || [];
-  let contactsHtml = "";
-  contacts.forEach((contact) => {
-    contactsHtml += `<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-    <span style="display:inline-block;width:100px">${contact.name}:</span>
-    <span style="display:inline-block;width:150px">${contact.phoneNumber}</span>
-    <button class="btn btn-primary" style="align-self: center;" onclick="window.location.href='tel:${contact.phoneNumber}'">Call</button>
-  </div>`;
+    // prev/next buttons listeners
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
 
-  });
-
-  let helpHtml = `
-    <div class="help-overlay-content">
-      <h1>List of current crisis/help phone numbers</h1>
-      <div class="contacts-wrapper">
-        ${contactsHtml}
-      </div>
-      <button class="btn btn-primary mt-3" onclick="hideHelp()">Close</button>
-    </div>
-  `;
-
-  const style = document.createElement('style');
-  style.innerHTML = `
-    #help-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.8);
-      z-index: 999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .help-overlay-content {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: white;
-      padding: 20px;
-      max-width: 600px;
-      width: 100%;
-      max-height: 80%;
-      overflow-y: auto;
-      text-align: center;
-      position: relative;
-      border-radius: 5px;
-      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .contacts-wrapper {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .close-btn {
-      position: relative;
-    }
-  `;
-
-  document.head.appendChild(style);
-  document.getElementById('help-overlay').innerHTML = helpHtml;
-  document.getElementById('help-overlay').style.display = 'block';
-}
-
-function showHelp() {
-  let contacts = JSON.parse(localStorage.getItem("contacts")) || [];
-  let contactsHtml = "";
-  contacts.forEach((contact) => {
-    // contactsHtml += `<li><span>call ${contact.name}: </span><a href="tel:${contact.phoneNumber}">${contact.phoneNumber}</a></li>`;
-    contactsHtml += `<li><a href="tel:${contact.phoneNumber}">Call ${contact.name}: ${contact.phoneNumber}</a></li>`;
-  });
-
-  let helpHtml = `
-    <div class="help-overlay-content">
-      <h1>List of current crisis/help phone numbers</h1>
-      <ul class="contacts-list">
-        ${contactsHtml}
-      </ul>
-      <button class="btn btn-primary mt-3" onclick="hideHelp()">Close</button>
-    </div>
-  `;
-
-  const style = document.createElement('style');
-  style.innerHTML = `
-    #help-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.8);
-      z-index: 999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .help-overlay-content {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: white;
-      padding: 20px;
-      max-width: 600px;
-      width: 100%;
-      max-height: 80%;
-      overflow-y: auto;
-      text-align: center;
-      position: relative;
-      border-radius: 5px;
-      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .contacts-list {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-    }
-    .contacts-list li {
-      margin: 10px 0;
-      cursor: pointer;
-    }
-    .contacts-list li:hover {
-      text-decoration: underline;
-    }
-    .close-btn {
-      position: relative;
-    }
-  `;
-
-  document.head.appendChild(style);
-  document.getElementById('help-overlay').innerHTML = helpHtml;
-  document.getElementById('help-overlay').style.display = 'block';
-
-  // Add click event listeners to each contact
-  const contactsListItems = document.querySelectorAll('.contacts-list li');
-  contactsListItems.forEach((item) => {
-    item.addEventListener('click', (event) => {
-      const phoneNumber = event.target.href.split(':')[1];
-      window.location.href = `tel:${phoneNumber}`;
+    prevBtn.addEventListener('click', function () {
+        changeStep(moduleId, -1);
     });
-  });
-}
 
+    nextBtn.addEventListener('click', function () {
+        changeStep(moduleId, 1);
+    });
 
-function hideHelp() {
-    document.getElementById('help-overlay').style.display = 'none';
+    // Load form data for each step
+    for (let i = 0; i < steps.length; i++) {
+      loadFormData(moduleId, i);
+    }
 }
 
 function finish() {
   window.close();
+}
+
+// global variables to keep track of the current step
+let currentStep = 0;
+const steps = document.getElementsByClassName("step");
+var timer = document.querySelector('.timer');
+const textArea = document.getElementById('text-area');
+const submitBtn = document.getElementById('submit-btn');
+var typedText = document.querySelector('.typedText');
+var isSubmitted = true;
+
+// Initialize the first step
+steps[currentStep].style.display = "block";
+
+// function to save the q1/q2 answers
+function saveFormData(moduleId, stepIndex) {
+  const step = steps[stepIndex];
+  const inputs = step.querySelectorAll("input, textarea, select");
+  const formData = {};
+
+  for (const input of inputs) {
+      if (input.type === "radio" && !input.checked) continue;
+      formData[input.name] = input.value;
+  }
+
+  const storageKey = moduleId + "_step" + stepIndex;
+  localStorage.setItem(storageKey, JSON.stringify(formData));
+}
+
+// function to load the q1/q2 answers if they were already saved
+function loadFormData(moduleId, stepIndex) {
+  const step = steps[stepIndex];
+  const inputs = step.querySelectorAll("input, textarea, select");
+  const storageKey = moduleId + "_step" + stepIndex;
+  const savedData = localStorage.getItem(storageKey);
+
+  if (savedData) {
+      const formData = JSON.parse(savedData);
+
+      for (const input of inputs) {
+          if (input.type === "radio") {
+              input.checked = formData[input.name] === input.value;
+          } else {
+              input.value = formData[input.name];
+          }
+      }
+  }
+}
+
+// prev/next functionality
+function changeStep(moduleId, direction) {
+  // Save the current step's data before changing the step
+  saveFormData(moduleId, currentStep);
+
+  steps[currentStep].style.display = "none";
+  currentStep += direction;
+
+  if (currentStep === steps.length - 1) { // last step, form submission
+      const savedText = localStorage.getItem(moduleId + '_text');
+      if (savedText) {  // load the saved text and be done with it.
+          isSubmitted = false;
+          textArea.style.display = 'none';
+          typedText.innerHTML = savedText;
+          submitBtn.disabled = false;
+      }
+      else{ // run timer
+          var minutes = 0;
+          var seconds = 2;
+
+          var interval = setInterval(function () {
+              if (minutes == 0 && seconds == 0) {
+                  timer.innerHTML = "Time's up!";
+                  clearInterval(interval);
+                  submitBtn.disabled = false;
+              } else {
+                  if (seconds == 0) {
+                      minutes--;
+                      seconds = 59;
+                  } else {
+                      seconds--;
+                  }
+
+                  timer.innerHTML = ("0" + minutes).slice(-2) + ":" + ("0" + seconds).slice(-2);
+              }
+          }, 1000);
+      }
+  }
+
+  steps[currentStep].style.display = "block";
+
+  document.getElementById("prevBtn").disabled = currentStep === 0;
+  document.getElementById("nextBtn").disabled = currentStep === steps.length - 1;
 }

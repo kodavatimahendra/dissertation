@@ -4,14 +4,33 @@
     <title>CronP - Client Portal</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <style>
-        .shadow-regular {
-            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('background_images/sunset.jpg');
+            background-size: auto;
         }
-        .center-screen {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+        .container {
+            /* max-width: 600px; */
+            margin: 0 auto;
+        }
+        .card {
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 5px;
+            background-color: white;
+            padding: 2rem;
+            opacity: 0.7;
+        }
+        .form-control:focus {
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
         }
     </style>
     <script>
@@ -21,30 +40,29 @@
     </script>
 </head>
 <body>
-    <!-- <div class="container center-screen shadow-regular"> -->
     <div class="container">
         <h1 class="text-center mt-5">CronP - Client Portal</h1>
         <div class="row justify-content-center mt-5">
-            <div class="col-md-4">
-                <form>
-                    <div class="form-group">
-                        <label for="client-username">Username</label>
-                        <input type="text" class="form-control" id="client-username" placeholder="Enter username">
+            <div class="col-md-8">
+                <div class="card">
+                    <form>
+                        <div class="form-group">
+                            <label for="client-username">Username</label>
+                            <input type="text" class="form-control" id="client-username" placeholder="Enter username">
+                        </div>
+                        <div class="form-group">
+                            <label for="client-password">Password</label>
+                            <input type="password" class="form-control" id="client-password" placeholder="Password">
+                        </div>
+                        <button type="button" class="btn btn-primary" onclick="redirectToDisclaimer()">Login</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <p><a href="#">Forgot your password? Click Here</a></p>
+                        <p><a href="#">Need to create an account? Click Here</a></p>
                     </div>
-                    <div class="form-group">
-                        <label for="client-password">Password</label>
-                        <input type="password" class="form-control" id="client-password" placeholder="Password">
-                    </div>
-                    <!-- <button type="submit" class="btn btn-primary" onclick="login()">Login</button> -->
-                    <button type="button" class="btn btn-primary" onclick="redirectToDisclaimer()">Login</button>
-                </form>
-                <div class="text-center mt-3">
-                    <p><a href="#">Forgot your password? Click Here</a></p>
-                    <p><a href="#">Need to create an account? Click Here</a></p>
                 </div>
             </div>
         </div>
     </div>
-    <!-- <script src="login.js"></script> -->
 </body>
 </html>

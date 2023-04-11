@@ -6,6 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <style>
+      body {
+        background-image: url('background_images/sunset.jpg');
+        background-size: auto;
+      }
+      .container {
+        padding-top: 3rem;
+      }
       .shadow-regular {
         box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
       }
@@ -14,6 +21,9 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        background-color: white;
+        padding: 2rem;
+        opacity: 0.7;
       }
       .addSpace {
         margin-top: 3rem;
@@ -26,6 +36,11 @@
       }
       .button-container button {
         margin-right: 1rem;
+      }
+      .scrollable-content {
+        max-height: 80vh;
+        overflow-y: auto;
+        padding-right: 1rem;
       }
     </style>
     <script>
@@ -40,6 +55,7 @@
     <div class="container center-screen shadow-regular">
       <div class="addSpace">
       <h1>Medical Information Disclaimer</h1>
+      <div class="scrollable-content">
       <p>The information provided on this website is for general informational purposes only and is not intended to be a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified healthcare provider with any questions you may have regarding a medical condition.</p>
       <p>Never disregard professional medical advice or delay in seeking it because of something you have read on this website.</p>
       <p>If you think you may have a medical emergency, call your doctor or 911 immediately.</p>
@@ -63,6 +79,7 @@
           <!-- <button type="button" class="btn btn-primary" id="prev-button" onclick="location.href='login.html'">Previous</button> -->
           <button type="button" class="btn btn-primary" id="next-button" onclick="location.href='works.html'" disabled>Next</button>
       </div>
+    </div>
 
     </div>
   </body>
