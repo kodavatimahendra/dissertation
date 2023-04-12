@@ -139,9 +139,11 @@ function generatePainLevelForm(targetElementId) {
   // Create and append the first question
   const question1Heading = document.createElement('h2');
   question1Heading.textContent = '1. What is your current level of pain';
+  question1Heading.className = 'question-title';  // Add custom class to the title
   form.appendChild(question1Heading);
   const question1Text = document.createElement('h4');
   question1Text.textContent = 'on a scale of 0 (non-existent) to 10 (extreme)';
+  question1Text.className = 'question-text';  // Add custom class to the text
   form.appendChild(question1Text);
 
   // Generate and append radio buttons for current pain level
@@ -164,9 +166,11 @@ function generatePainLevelForm(targetElementId) {
   // Create and append the second question
   const question2Heading = document.createElement('h2');
   question2Heading.textContent = '2. On average, what was your level of pain during the past 7 days?';
+  question2Heading.className = 'question-title';  // Add custom class to the title
   form.appendChild(question2Heading);
   const question2Text = document.createElement('h4');
   question2Text.textContent = 'on a scale of 0 (non-existent) to 10 (extreme)';
+  question2Text.className = 'question-text';  // Add custom class to the text
   form.appendChild(question2Text);
 
   // Generate and append radio buttons for average pain level
