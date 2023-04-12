@@ -25,6 +25,14 @@ body {
     overflow: auto;
     box-sizing: border-box;
 }
+.question-title {
+    margin-top: 30px;
+    margin-bottom: 20px;  /* Adjust the spacing as needed */
+}
+.question-text {
+    margin-top: 0px;  /* Adjust the spacing as needed */
+    margin-bottom: 20px;
+}
 #text-area {
     height: 50vh;
     width: 100%;
@@ -43,7 +51,20 @@ body {
 .step {
     display: none;
 }
-
+.pain-level-form {
+    font-family: Arial, sans-serif;
+  }  
+.radio-input {
+display: inline-block;
+margin-right: 5px;
+}
+.radio-label {
+display: inline-block;
+margin-right: 20px;
+}
+h2 {
+margin-bottom: 10px;
+}  
 /* Media queries for responsiveness */
 /* @media (max-width: 576px) {
     .form-control {
