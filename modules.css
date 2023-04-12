@@ -43,7 +43,20 @@ body {
 .step {
     display: none;
 }
-
+.pain-level-form {
+    font-family: Arial, sans-serif;
+  }  
+.radio-input {
+display: inline-block;
+margin-right: 5px;
+}
+.radio-label {
+display: inline-block;
+margin-right: 20px;
+}
+h2 {
+margin-bottom: 10px;
+}  
 /* Media queries for responsiveness */
 /* @media (max-width: 576px) {
     .form-control {

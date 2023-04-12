@@ -128,6 +128,68 @@ function changeStep(moduleId, direction) {
   document.getElementById("prevBtn").disabled = currentStep === 0;
   document.getElementById("nextBtn").disabled = currentStep === steps.length - 1;
 }
+
+function generatePainLevelForm(targetElementId) {
+  // Get the target element where the form will be appended
+  const targetElement = document.getElementById(targetElementId);
+
+  // Create the form element
+  const form = document.createElement('form');
+
+  // Create and append the first question
+  const question1Heading = document.createElement('h2');
+  question1Heading.textContent = '1. What is your current level of pain';
+  form.appendChild(question1Heading);
+  const question1Text = document.createElement('h4');
+  question1Text.textContent = 'on a scale of 0 (non-existent) to 10 (extreme)';
+  form.appendChild(question1Text);
+
+  // Generate and append radio buttons for current pain level
+  for (let i = 0; i <= 10; i++) {
+    const radioInput = document.createElement('input');
+    radioInput.type = 'radio';
+    radioInput.name = 'currentPain';
+    radioInput.value = i;
+    radioInput.id = 'currentPain' + i;
+    radioInput.classList.add('radio-input');
+
+    const radioLabel = document.createElement('label');
+    radioLabel.textContent = i;
+    radioLabel.htmlFor = radioInput.id;
+    radioLabel.classList.add('radio-label');
+    form.appendChild(radioInput);
+    form.appendChild(radioLabel);
+  }
+
+  // Create and append the second question
+  const question2Heading = document.createElement('h2');
+  question2Heading.textContent = '2. On average, what was your level of pain during the past 7 days?';
+  form.appendChild(question2Heading);
+  const question2Text = document.createElement('h4');
+  question2Text.textContent = 'on a scale of 0 (non-existent) to 10 (extreme)';
+  form.appendChild(question2Text);
+
+  // Generate and append radio buttons for average pain level
+  for (let i = 0; i <= 10; i++) {
+    const radioInput = document.createElement('input');
+    radioInput.type = 'radio';
+    radioInput.name = 'averagePain';
+    radioInput.value = i;
+    radioInput.id = 'averagePain' + i;
+    radioInput.classList.add('radio-input');
+
+    const radioLabel = document.createElement('label');
+    radioLabel.textContent = i;
+    radioLabel.htmlFor = radioInput.id;
+    radioLabel.classList.add('radio-label');
+    form.appendChild(radioInput);
+    form.appendChild(radioLabel);
+  }
+
+  // Append the generated form to the target element
+  targetElement.appendChild(form);
+}
+
 function generateQuestions(moduleId) {
   const questions = [
       "Repeated, disturbing, and unwanted memories of the stressful experience?",
@@ -201,6 +263,9 @@ function generateQuestions(moduleId) {
 
       tbodyElement.appendChild(trElement);
   });
+
+  generatePainLevelForm('questionnaire2');
+
   // Load form data for each step
   for (let i = 0; i < steps.length; i++) {
     loadFormData(moduleId, i);
