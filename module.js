@@ -92,13 +92,17 @@ saveFormData(moduleId, currentStep);
 steps[currentStep].style.display = "none";
 currentStep += direction;
 
-if (currentStep === steps.length - 1) { // last step, form submission
+if (currentStep === steps.length-1){
+  submitBtn.disabled = false;
+}
+
+if (currentStep === steps.length - 2) { // last step, form submission
     const savedText = localStorage.getItem(moduleId + '_text');
     if (savedText) {  // load the saved text and be done with it.
         isSubmitted = false;
         textArea.style.display = 'none';
         typedText.innerHTML = savedText;
-        submitBtn.disabled = false;
+        submitBtn.disabled = true;
     }
     else{ // run timer
         var minutes = 0;
@@ -194,6 +198,46 @@ for (let i = 0; i <= 10; i++) {
 targetElement.appendChild(form);
 }
 
+//Third questionnaire
+function generateThirdQuestionnaire(targetElementId){
+  // Get the target element where the form will be appended
+const targetElement = document.getElementById(targetElementId);
+
+// Create the form element
+const form = document.createElement('form');
+
+// Create and append the first question
+const question1Heading = document.createElement('h2');
+question1Heading.textContent = '1. What is your current level of pain';
+question1Heading.className = 'question-title';  // Add custom class to the title
+form.appendChild(question1Heading);
+const question1Text = document.createElement('h4');
+question1Text.textContent = 'on a scale of 0 (non-existent) to 10 (extreme)';
+question1Text.className = 'question-text';  // Add custom class to the text
+form.appendChild(question1Text);
+
+// Generate and append radio buttons for current pain level
+for (let i = 0; i <= 10; i++) {
+  const radioInput = document.createElement('input');
+  radioInput.type = 'radio';
+  radioInput.name = 'currentPain';
+  radioInput.value = i;
+  radioInput.id = 'currentPain' + i;
+  radioInput.classList.add('radio-input');
+
+  const radioLabel = document.createElement('label');
+  radioLabel.textContent = i;
+  radioLabel.htmlFor = radioInput.id;
+  radioLabel.classList.add('radio-label');
+  form.appendChild(radioInput);
+  form.appendChild(radioLabel);
+}
+
+// Append the generated form to the target element
+targetElement.appendChild(form);
+}
+
+
 function generateQuestions(moduleId) {
 const questions = [
     "Repeated, disturbing, and unwanted memories of the stressful experience?",
@@ -269,6 +313,7 @@ questions.forEach((question, index) => {
 });
 
 generatePainLevelForm('questionnaire2');
+generateThirdQuestionnaire('questionnaire3');
 
 // Load form data for each step
 for (let i = 0; i < steps.length; i++) {
