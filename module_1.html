@@ -7,8 +7,6 @@
 </head>
 <body>
 <div class="container">
-
-
     <div class="step" id="questionnaire1">
         <h2>Questionnaire 1</h2>
         <form>
@@ -34,28 +32,30 @@
         <form>
             <table class="table table-bordered">
                 <thead>
-                    <!-- <tr>
-                        <th>Question</th>
-                        <th>Option A</th>
-                        <th>Option B</th>
-                    </tr> -->
                 </thead>
                 <tbody>
-                    <!-- <tr>
-                        <td>Question 2.1</td>
-                        <td><input type="radio" name="q2_1" value="A"></td>
-                        <td><input type="radio" name="q2_1" value="B"></td>
-                    </tr>
-                    <tr>
-                        <td>Question 2.2</td>
-                        <td><input type="radio" name="q2_2" value="A"></td>
-                        <td><input type="radio" name="q2_2" value="B"></td>
-                    </tr> -->
                 </tbody>
             </table>
         </form>
     </div>
     
+    <div class="step" id="education">
+        <h2> Add emergency contacts</h2>
+        <div class="contact-list" id="contact-list"></div>
+        
+        <div class="btn-container">
+            <button type="button" class="btn btn-secondary" onclick="showPhoneNumberForm()">Add more crisis/help phone number?</button>
+        </div>
+        <br>
+
+        <div class="form-group hidden" id="phone-number-form">
+          <label for="name">Name:</label> <br>
+          <input type="text" class="form-control2" id="name" placeholder="Enter name"><br>
+          <label for="phone-number">Phone Number:</label><br>
+          <input type="text" class="form-control2" id="phone-number" placeholder="Enter phone number"><br>
+          <button type="button" class="btn btn-secondary mt-2" onclick="addPhoneNumber()">Save Name and Phone Number</button>
+        </div>
+    </div>
 
     <div class="step" id="textbox">
         <h2>Text Box</h2>
@@ -63,6 +63,18 @@
         <p>You can start typing how you feel. You have 30 mins to complete this section.</p>
         <textarea id="text-area" class="form-control" placeholder="Enter your text..."></textarea>
         <p class="typedText"></p>
+    </div>
+
+    <div class="step" id="questionnaire3">
+        <h2>Questionnaire 3</h2>
+        <form>
+            <table class="table table-bordered">
+                <thead>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </form>
     </div>
 
     <div class="buttons">
