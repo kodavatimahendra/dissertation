@@ -2,7 +2,7 @@ body {
     font-family: Arial, sans-serif;
     height: 100vh;
     margin: 0;
-    background-image: url('background_images/sunset.jpg');
+    background-image: url('background_images/plain.png');
     background-size: cover;
 }
 .container {
