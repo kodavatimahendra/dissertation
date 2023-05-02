@@ -39,6 +39,23 @@
         </form>
     </div>
     
+    <div class="step" id="education">
+        <h2> Add emergency contacts</h2>
+        <div class="contact-list" id="contact-list"></div>
+        
+        <div class="btn-container">
+            <button type="button" class="btn btn-secondary" onclick="showPhoneNumberForm()">Add more crisis/help phone number?</button>
+        </div>
+        <br>
+
+        <div class="form-group hidden" id="phone-number-form">
+          <label for="name">Name:</label> <br>
+          <input type="text" class="form-control2" id="name" placeholder="Enter name"><br>
+          <label for="phone-number">Phone Number:</label><br>
+          <input type="text" class="form-control2" id="phone-number" placeholder="Enter phone number"><br>
+          <button type="button" class="btn btn-secondary mt-2" onclick="addPhoneNumber()">Save Name and Phone Number</button>
+        </div>
+    </div>
 
     <div class="step" id="textbox">
         <h2>Text Box</h2>
